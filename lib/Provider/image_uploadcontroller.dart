@@ -10,10 +10,12 @@ class ImageUploadController extends ChangeNotifier {
   File? imageFile;
   String uploadStatus = "No Image";
   bool isUploading = false;
+  ConnectivityResult connectivityStatus = ConnectivityResult.none;
 
   Future<void> pickImage() async {
     final picker = ImagePicker();
     final picked = await picker.pickImage(source: ImageSource.gallery);
+
     if (picked != null) {
       imageFile = File(picked.path);
       uploadStatus = "Pending";
@@ -26,6 +28,7 @@ class ImageUploadController extends ChangeNotifier {
   Future<void> checkAndUpload() async {
     final result = await Connectivity().checkConnectivity();
     if (result != ConnectivityResult.none && imageFile != null) {
+      connectivityStatus = result;
       uploadImage();
     }
   }
@@ -44,10 +47,10 @@ class ImageUploadController extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         uploadStatus = "Success";
-        imageFile = null;
       } else {
         uploadStatus = "Failed";
       }
+      notifyListeners();
     } catch (e) {
       uploadStatus = "Failed";
     } finally {
