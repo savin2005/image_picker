@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:offline_image_upload/controller/image_uploadcontroller.dart';
+import 'package:offline_image_upload/Provider/image_uploadcontroller.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<ImageUploadcontroller>(context);
+    final provider = Provider.of<ImageUploadController>(context, listen: false);
 
     return Scaffold(
       appBar: AppBar(title: const Text("Offline Upload")),

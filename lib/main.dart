@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:offline_image_upload/controller/image_uploadcontroller.dart';
-import 'package:offline_image_upload/view/homescreen.dart';
+import 'package:offline_image_upload/Provider/image_uploadcontroller.dart';
+import 'package:offline_image_upload/ui/homescreen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (context) => ImageUploadcontroller(),
+          create: (context) => ImageUploadController(),
         )
       ],
       child: MaterialApp(

@@ -6,7 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:http/http.dart' as http;
 
-class ImageUploadcontroller extends ChangeNotifier {
+class ImageUploadController extends ChangeNotifier {
   File? imageFile;
   String uploadStatus = "No Image";
   bool isUploading = false;
